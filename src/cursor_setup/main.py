@@ -1,5 +1,5 @@
 """
-cursor-init: A CLI tool for initializing .cursorrules files.
+cursor-setup: A CLI tool for initializing .cursorrules files.
 
 This module contains the main CLI logic using Typer and Rich.
 Supports both local templates and dynamic remote registry.
@@ -16,11 +16,11 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
-from cursor_init.templates import TEMPLATES
+from cursor_setup.templates import TEMPLATES
 
 # Initialize Typer app and Rich console
 app = typer.Typer(
-    name="cursor-init",
+    name="cursor-setup",
     help="🚀 Initialize your Cursor AI context in seconds.",
     add_completion=False,
 )
@@ -28,7 +28,7 @@ console = Console()
 
 # Constants
 CURSORRULES_FILENAME = ".cursorrules"
-REMOTE_REGISTRY_URL = "https://raw.githubusercontent.com/ThanhNguyxn/cursor-init/main/rules.json"
+REMOTE_REGISTRY_URL = "https://raw.githubusercontent.com/ThanhNguyxn/cursor-setup/main/rules.json"
 REQUEST_TIMEOUT = 2  # seconds (fast timeout for better UX)
 
 
@@ -144,11 +144,11 @@ def list() -> None:
     console.print(table)
     console.print()
     console.print(
-        "[dim]Usage: cursor-init install <template>[/dim]",
+        "[dim]Usage: cursor-setup install <template>[/dim]",
         justify="center",
     )
     console.print(
-        "[dim]Pro tip: cursor-init install --url <link> for custom rules[/dim]",
+        "[dim]Pro tip: cursor-setup install --url <link> for custom rules[/dim]",
         justify="center",
     )
     console.print()
@@ -175,8 +175,8 @@ def install(
     Install a cursor rule template to the current directory.
     
     Examples:
-        cursor-init install python
-        cursor-init install --url https://raw.githubusercontent.com/.../rules.txt
+        cursor-setup install python
+        cursor-setup install --url https://raw.githubusercontent.com/.../rules.txt
     """
     # Validate: either name or url must be provided, but not both
     if url and name:
@@ -190,8 +190,8 @@ def install(
             "\n[red]❌ Error:[/red] Please provide a template name or use --url.\n"
         )
         console.print("Examples:", style="yellow")
-        console.print("  cursor-init install python", style="dim")
-        console.print("  cursor-init install --url https://example.com/rule.txt", style="dim")
+        console.print("  cursor-setup install python", style="dim")
+        console.print("  cursor-setup install --url https://example.com/rule.txt", style="dim")
         console.print()
         raise typer.Exit(code=1)
     

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "name": "cursor-init-registry",
+  "name": "cursor-setup-registry",
   "version": "2.0.0",
-  "description": "Community-driven template registry for cursor-init",
+  "description": "Community-driven template registry for cursor-setup",
   "templates": {
     "laravel": {
       "name": "Laravel",
@@ -50,7 +50,7 @@
   "_meta": {
     "updated_at": "2024-12-02",
     "maintainer": "ThanhNguyxn",
-    "source": "https://github.com/ThanhNguyxn/cursor-init",
-    "contribute": "https://github.com/ThanhNguyxn/cursor-init/blob/main/CONTRIBUTING.md"
+    "source": "https://github.com/ThanhNguyxn/cursor-setup",
+    "contribute": "https://github.com/ThanhNguyxn/cursor-setup/blob/main/CONTRIBUTING.md"
   }
 }

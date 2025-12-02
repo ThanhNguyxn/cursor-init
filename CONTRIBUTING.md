@@ -1,8 +1,8 @@
-# Contributing to cursor-init
+# Contributing to cursor-setup
 
 First off, thanks for taking the time to contribute! 🎉
 
-This guide will help you add new templates to cursor-init. It's designed to be simple — even if you've never contributed to open source before.
+This guide will help you add new templates to cursor-setup. It's designed to be simple — even if you've never contributed to open source before.
 
 ---
 
@@ -21,7 +21,7 @@ This guide will help you add new templates to cursor-init. It's designed to be s
 
 **Add a template to `rules.json`** — our community-driven registry!
 
-This file contains URLs to cursor rules from around the internet. When users run `cursor-init list`, they see templates from this file.
+This file contains URLs to cursor rules from around the internet. When users run `cursor-setup list`, they see templates from this file.
 
 You don't need to write any Python code. Just add a URL and description!
 
@@ -31,7 +31,7 @@ You don't need to write any Python code. Just add a URL and description!
 
 ### Step 1: Fork the Repository
 
-Click the **Fork** button at the top of [this page](https://github.com/ThanhNguyxn/cursor-init).
+Click the **Fork** button at the top of [this page](https://github.com/ThanhNguyxn/cursor-setup).
 
 ### Step 2: Edit `rules.json`
 
@@ -115,7 +115,7 @@ https://github.com/PatrickJS/awesome-cursorrules/blob/main/rules/laravel-tall-st
 
 ### 🐛 Report Bugs
 
-Found a bug? [Open an issue](https://github.com/ThanhNguyxn/cursor-init/issues/new) with:
+Found a bug? [Open an issue](https://github.com/ThanhNguyxn/cursor-setup/issues/new) with:
 - What you expected to happen
 - What actually happened
 - Steps to reproduce
@@ -123,7 +123,7 @@ Found a bug? [Open an issue](https://github.com/ThanhNguyxn/cursor-init/issues/n
 
 ### 💡 Suggest Features
 
-Have an idea? [Open an issue](https://github.com/ThanhNguyxn/cursor-init/issues/new) and describe:
+Have an idea? [Open an issue](https://github.com/ThanhNguyxn/cursor-setup/issues/new) and describe:
 - The feature you want
 - Why it would be useful
 - Any implementation ideas
@@ -143,8 +143,8 @@ Want to work on the Python code? Here's how:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/cursor-init.git
-cd cursor-init
+git clone https://github.com/YOUR_USERNAME/cursor-setup.git
+cd cursor-setup
 
 # Create a virtual environment
 python -m venv venv
@@ -159,7 +159,7 @@ venv\Scripts\activate
 pip install -e ".[dev]"
 
 # Verify it works
-cursor-init --help
+cursor-setup --help
 ```
 
 ### Running Tests
@@ -214,8 +214,8 @@ chore: bump dependencies
 
 ## Questions?
 
-- 💬 [Open a Discussion](https://github.com/ThanhNguyxn/cursor-init/discussions)
-- 🐛 [Open an Issue](https://github.com/ThanhNguyxn/cursor-init/issues)
+- 💬 [Open a Discussion](https://github.com/ThanhNguyxn/cursor-setup/discussions)
+- 🐛 [Open an Issue](https://github.com/ThanhNguyxn/cursor-setup/issues)
 
 ---
 

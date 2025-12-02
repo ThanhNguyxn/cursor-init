@@ -63,7 +63,7 @@ jobs:
     
     environment:
       name: pypi
-      url: https://pypi.org/project/cursor-init/
+      url: https://pypi.org/project/cursor-setup/
 
     permissions:
       id-token: write  # Required for trusted publishing
@@ -100,7 +100,7 @@ jobs:
 
     environment:
       name: testpypi
-      url: https://test.pypi.org/project/cursor-init/
+      url: https://test.pypi.org/project/cursor-setup/
 
     permissions:
       id-token: write

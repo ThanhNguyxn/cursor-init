@@ -1,5 +1,5 @@
 """
-Template definitions for cursor-init.
+Template definitions for cursor-setup.
 
 Each template contains expert-level .cursorrules content for specific tech stacks.
 """

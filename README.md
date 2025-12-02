@@ -1,17 +1,17 @@
-# cursor-init 🚀
+# cursor-setup 🚀
 
 > **The easiest way to set up Cursor AI for your project. One command. Done.**
 
-[![PyPI version](https://badge.fury.io/py/cursor-init.svg)](https://badge.fury.io/py/cursor-init)
+[![PyPI version](https://badge.fury.io/py/cursor-setup.svg)](https://badge.fury.io/py/cursor-setup)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://pepy.tech/badge/cursor-init)](https://pepy.tech/project/cursor-init)
+[![Downloads](https://pepy.tech/badge/cursor-setup)](https://pepy.tech/project/cursor-setup)
 
 ---
 
 ## What is this?
 
-**cursor-init** creates a `.cursorrules` file in your project folder. This file tells [Cursor AI](https://cursor.sh/) how to write code specifically for your tech stack (Python, React, Flutter, etc.).
+**cursor-setup** creates a `.cursorrules` file in your project folder. This file tells [Cursor AI](https://cursor.sh/) how to write code specifically for your tech stack (Python, React, Flutter, etc.).
 
 **Before:** You Google for rules, copy-paste from random GitHub gists, hope they work...
 
@@ -22,10 +22,10 @@
 ## 📦 Installation
 
 ```bash
-pip install cursor-init
+pip install cursor-setup
 ```
 
-That's it! Now you can use `cursor-init` anywhere.
+That's it! Now you can use `cursor-setup` anywhere.
 
 ---
 
@@ -36,7 +36,7 @@ That's it! Now you can use `cursor-init` anywhere.
 Already know what you want? Just run:
 
 ```bash
-cursor-init install python
+cursor-setup install python
 ```
 
 Replace `python` with your stack: `nextjs`, `flutter`, `java-spring`, `laravel`, `vue`, `react`, `rust`, `golang`, `svelte`...
@@ -50,7 +50,7 @@ Replace `python` with your stack: `nextjs`, `flutter`, `java-spring`, `laravel`,
 Not sure what's available? List all templates first:
 
 ```bash
-cursor-init list
+cursor-setup list
 ```
 
 You'll see a nice table like this:
@@ -74,13 +74,13 @@ You'll see a nice table like this:
 Pick one and install it:
 
 ```bash
-cursor-init install flutter
+cursor-setup install flutter
 ```
 
 Want to see what's inside before installing?
 
 ```bash
-cursor-init show flutter
+cursor-setup show flutter
 ```
 
 ---
@@ -90,13 +90,13 @@ cursor-init show flutter
 Found a custom `.cursorrules` file online? Install it directly:
 
 ```bash
-cursor-init install --url https://example.com/my-rules.txt
+cursor-setup install --url https://example.com/my-rules.txt
 ```
 
 **Real-world example** — Install TypeScript rules from awesome-cursorrules:
 
 ```bash
-cursor-init install --url https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/typescript-cursorrules-prompt-file/.cursorrules
+cursor-setup install --url https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/typescript-cursorrules-prompt-file/.cursorrules
 ```
 
 This is perfect for:
@@ -121,7 +121,7 @@ This is perfect for:
 | `golang` | Go with idiomatic patterns, concurrency |
 | `svelte` | SvelteKit with TypeScript, stores, SSR |
 
-> 💡 **More templates are added regularly!** Run `cursor-init list` to see the latest.
+> 💡 **More templates are added regularly!** Run `cursor-setup list` to see the latest.
 
 ---
 
@@ -136,13 +136,13 @@ This is perfect for:
 
 ```bash
 # Skip the "overwrite?" prompt
-cursor-init install python --force
+cursor-setup install python --force
 
 # Short form
-cursor-init install python -f
+cursor-setup install python -f
 
 # Combine flags
-cursor-init install -u https://example.com/rules.txt -f
+cursor-setup install -u https://example.com/rules.txt -f
 ```
 
 ---
@@ -150,7 +150,7 @@ cursor-init install -u https://example.com/rules.txt -f
 ## 🌐 How It Works
 
 1. **Local templates** are bundled with the package (always available offline)
-2. **Remote templates** are fetched from our [community registry](https://github.com/ThanhNguyxn/cursor-init/blob/main/rules.json)
+2. **Remote templates** are fetched from our [community registry](https://github.com/ThanhNguyxn/cursor-setup/blob/main/rules.json)
 3. If you're offline, it silently falls back to local templates only
 
 This means:
@@ -179,8 +179,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions.
 
 ```bash
 # Clone the repo
-git clone https://github.com/ThanhNguyxn/cursor-init.git
-cd cursor-init
+git clone https://github.com/ThanhNguyxn/cursor-setup.git
+cd cursor-setup
 
 # Create virtual environment
 python -m venv venv
@@ -190,7 +190,7 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -e ".[dev]"
 
 # Test it
-cursor-init --help
+cursor-setup --help
 ```
 
 ---
@@ -215,5 +215,5 @@ MIT License — use it however you want!
 </p>
 
 <p align="center">
-  <a href="https://github.com/ThanhNguyxn/cursor-init">https://github.com/ThanhNguyxn/cursor-init</a>
+  <a href="https://github.com/ThanhNguyxn/cursor-setup">https://github.com/ThanhNguyxn/cursor-setup</a>
 </p>
