@@ -3,9 +3,12 @@ cursor-setup: A CLI tool for initializing .cursorrules files.
 
 This module contains the main CLI logic using Typer and Rich.
 Supports both local templates and dynamic remote registry.
+Features smart caching and self-upgrade capabilities.
 
-Version: 2.0.0
+Version: 2.1.0
 """
+import subprocess
+import sys
 from pathlib import Path
 from typing import Optional
 
@@ -13,6 +16,7 @@ import requests
 import typer
 from rich.console import Console
 from rich.panel import Panel
+from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.table import Table
 from rich.text import Text
 
@@ -29,7 +33,62 @@ console = Console()
 # Constants
 CURSORRULES_FILENAME = ".cursorrules"
 REMOTE_REGISTRY_URL = "https://raw.githubusercontent.com/ThanhNguyxn/cursor-setup/main/rules.json"
-REQUEST_TIMEOUT = 2  # seconds (fast timeout for better UX)
+REQUEST_TIMEOUT = 5  # seconds
+CACHE_DIR = Path.home() / ".cursor-setup" / "cache"
+
+
+def get_cache_path(name: str) -> Path:
+    """
+    Get the cache file path for a template.
+    
+    Args:
+        name: Template name (e.g., 'python', 'react').
+        
+    Returns:
+        Path to the cache file.
+    """
+    return CACHE_DIR / f"{name}.cursorrules"
+
+
+def ensure_cache_dir() -> None:
+    """Create cache directory if it doesn't exist."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def load_from_cache(name: str) -> Optional[str]:
+    """
+    Load template content from cache.
+    
+    Args:
+        name: Template name.
+        
+    Returns:
+        Cached content if exists, None otherwise.
+    """
+    cache_path = get_cache_path(name)
+    if cache_path.exists():
+        try:
+            return cache_path.read_text(encoding="utf-8")
+        except OSError:
+            return None
+    return None
+
+
+def save_to_cache(name: str, content: str) -> None:
+    """
+    Save template content to cache.
+    
+    Args:
+        name: Template name.
+        content: Template content to cache.
+    """
+    try:
+        ensure_cache_dir()
+        cache_path = get_cache_path(name)
+        cache_path.write_text(content, encoding="utf-8")
+    except OSError:
+        # Silent fail - caching is optional
+        pass
 
 
 def get_registry() -> dict:
@@ -170,6 +229,11 @@ def install(
         "--force", "-f",
         help="Overwrite existing .cursorrules without confirmation",
     ),
+    no_cache: bool = typer.Option(
+        False,
+        "--no-cache",
+        help="Force re-download and bypass cache",
+    ),
 ) -> None:
     """
     Install a cursor rule template to the current directory.
@@ -177,6 +241,7 @@ def install(
     Examples:
         cursor-setup install python
         cursor-setup install --url https://raw.githubusercontent.com/.../rules.txt
+        cursor-setup install python --no-cache
     """
     # Validate: either name or url must be provided, but not both
     if url and name:
@@ -236,16 +301,33 @@ def install(
         raise typer.Exit(code=1)
 
     template = all_templates[name]
+    content: Optional[str] = None
     
     # Check if template has a URL (remote template) or content (local template)
     if "url" in template:
-        # Remote template: download from URL
-        console.print(f"\n[cyan]🌐 Fetching {template['name']} rules...[/cyan]\n")
-        try:
-            content = download_from_url(template["url"])
-        except requests.RequestException as e:
-            console.print(f"\n[red]❌ Failed to download template:[/red] {e}\n")
-            raise typer.Exit(code=1)
+        # Try cache first (unless --no-cache is set)
+        if not no_cache:
+            cached_content = load_from_cache(name)
+            if cached_content:
+                console.print(f"\n[yellow]⚡ Loaded [bold]{template['name']}[/bold] from cache[/yellow]\n")
+                content = cached_content
+        
+        # Cache miss or --no-cache: download from URL
+        if content is None:
+            console.print(f"\n[cyan]🌐 Fetching {template['name']} rules...[/cyan]\n")
+            try:
+                content = download_from_url(template["url"])
+                # Save to cache for next time
+                save_to_cache(name, content)
+            except requests.RequestException as e:
+                # Try fallback to cache even if --no-cache was set
+                cached_content = load_from_cache(name)
+                if cached_content:
+                    console.print(f"[yellow]⚠️  Network error, using cached version[/yellow]\n")
+                    content = cached_content
+                else:
+                    console.print(f"\n[red]❌ Failed to download template:[/red] {e}\n")
+                    raise typer.Exit(code=1)
     else:
         # Local template: use embedded content
         content = template["content"]
@@ -290,12 +372,19 @@ def show(
     
     # Check if template has a URL (remote) or content (local)
     if "url" in template:
-        console.print(f"\n[cyan]🌐 Fetching {template['name']} preview...[/cyan]\n")
-        try:
-            content = download_from_url(template["url"])
-        except requests.RequestException as e:
-            console.print(f"\n[red]❌ Failed to fetch preview:[/red] {e}\n")
-            raise typer.Exit(code=1)
+        # Try cache first
+        cached_content = load_from_cache(name)
+        if cached_content:
+            console.print(f"\n[yellow]⚡ Loaded from cache[/yellow]\n")
+            content = cached_content
+        else:
+            console.print(f"\n[cyan]🌐 Fetching {template['name']} preview...[/cyan]\n")
+            try:
+                content = download_from_url(template["url"])
+                save_to_cache(name, content)
+            except requests.RequestException as e:
+                console.print(f"\n[red]❌ Failed to fetch preview:[/red] {e}\n")
+                raise typer.Exit(code=1)
     else:
         content = template["content"]
 
@@ -309,6 +398,116 @@ def show(
         )
     )
     console.print()
+
+
+@app.command()
+def upgrade() -> None:
+    """Upgrade cursor-setup to the latest version."""
+    console.print()
+    
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+        transient=True,
+    ) as progress:
+        progress.add_task(description="[cyan]Checking for updates...[/cyan]", total=None)
+        
+        try:
+            # Run pip install --upgrade
+            result = subprocess.run(
+                [sys.executable, "-m", "pip", "install", "--upgrade", "cursor-setup"],
+                capture_output=True,
+                text=True,
+                timeout=60,
+            )
+            
+            if result.returncode != 0:
+                console.print(f"[red]❌ Upgrade failed:[/red]\n{result.stderr}")
+                raise typer.Exit(code=1)
+                
+        except subprocess.TimeoutExpired:
+            console.print("[red]❌ Upgrade timed out. Please try again.[/red]")
+            raise typer.Exit(code=1)
+        except FileNotFoundError:
+            console.print("[red]❌ pip not found. Please ensure pip is installed.[/red]")
+            raise typer.Exit(code=1)
+    
+    # Get new version
+    try:
+        from importlib.metadata import version
+        new_version = version("cursor-setup")
+    except Exception:
+        new_version = "unknown"
+    
+    success_text = Text()
+    success_text.append("✨ ", style="bold")
+    success_text.append("Successfully upgraded to ", style="green")
+    success_text.append(f"v{new_version}", style="bold green")
+    success_text.append("!", style="green")
+    
+    console.print(Panel(success_text, border_style="green", padding=(0, 2)))
+    console.print()
+
+
+@app.command()
+def cache(
+    clear: bool = typer.Option(
+        False,
+        "--clear", "-c",
+        help="Clear all cached templates",
+    ),
+) -> None:
+    """Manage the template cache."""
+    if clear:
+        if CACHE_DIR.exists():
+            import shutil
+            try:
+                shutil.rmtree(CACHE_DIR)
+                console.print("\n[green]✨ Cache cleared successfully![/green]\n")
+            except OSError as e:
+                console.print(f"\n[red]❌ Failed to clear cache:[/red] {e}\n")
+                raise typer.Exit(code=1)
+        else:
+            console.print("\n[dim]Cache is already empty.[/dim]\n")
+        return
+    
+    # Show cache info
+    console.print()
+    if not CACHE_DIR.exists():
+        console.print("[dim]No cache directory found.[/dim]")
+        console.print(f"[dim]Cache location: {CACHE_DIR}[/dim]\n")
+        return
+    
+    cached_files = list(CACHE_DIR.glob("*.cursorrules"))
+    
+    if not cached_files:
+        console.print("[dim]Cache is empty.[/dim]")
+        console.print(f"[dim]Cache location: {CACHE_DIR}[/dim]\n")
+        return
+    
+    table = Table(
+        title="📦 Cached Templates",
+        show_header=True,
+        header_style="bold magenta",
+        border_style="cyan",
+    )
+    
+    table.add_column("Template", style="cyan")
+    table.add_column("Size", style="green")
+    
+    total_size = 0
+    for cache_file in sorted(cached_files):
+        size = cache_file.stat().st_size
+        total_size += size
+        size_str = f"{size / 1024:.1f} KB" if size >= 1024 else f"{size} B"
+        table.add_row(cache_file.stem, size_str)
+    
+    console.print(table)
+    total_str = f"{total_size / 1024:.1f} KB" if total_size >= 1024 else f"{total_size} B"
+    console.print(f"\n[dim]Total size: {total_str}[/dim]")
+    console.print(f"[dim]Location: {CACHE_DIR}[/dim]")
+    console.print("\n[dim]Use --clear to remove all cached templates[/dim]\n")
 
 
 def main() -> None:

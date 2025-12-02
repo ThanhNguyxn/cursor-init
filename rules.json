@@ -1,36 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "cursor-setup-registry",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Community-driven template registry for cursor-setup",
   "templates": {
-    "laravel": {
-      "name": "Laravel",
-      "description": "Laravel PHP framework with Eloquent, Blade, and best practices",
-      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/laravel-tall-stack-best-practices/.cursorrules",
+    "python": {
+      "name": "Python",
+      "description": "Modern Python with type hints, docstrings, pytest, and best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/python-cursorrules-prompt-file/.cursorrules",
       "author": "PatrickJS/awesome-cursorrules",
-      "tags": ["php", "laravel", "backend", "web"]
+      "tags": ["python", "backend", "scripting"]
     },
-    "rust": {
-      "name": "Rust",
-      "description": "Rust with memory safety, ownership patterns, and idiomatic code",
-      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/rust-code-guidelines/.cursorrules",
+    "typescript": {
+      "name": "TypeScript",
+      "description": "TypeScript with strict mode, modern patterns, and best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/typescript-cursorrules-prompt-file/.cursorrules",
       "author": "PatrickJS/awesome-cursorrules",
-      "tags": ["rust", "systems", "performance"]
-    },
-    "vue": {
-      "name": "Vue.js",
-      "description": "Vue 3 with Composition API, TypeScript, and Pinia",
-      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/vue-3-composition-api-cursorrules/.cursorrules",
-      "author": "PatrickJS/awesome-cursorrules",
-      "tags": ["vue", "javascript", "typescript", "frontend"]
-    },
-    "golang": {
-      "name": "Go",
-      "description": "Go with idiomatic patterns, error handling, and concurrency",
-      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/go-backend-scalability-cursorrules-prompt-file/.cursorrules",
-      "author": "PatrickJS/awesome-cursorrules",
-      "tags": ["go", "golang", "backend", "concurrency"]
+      "tags": ["typescript", "javascript", "frontend", "backend"]
     },
     "react": {
       "name": "React",
@@ -39,12 +25,243 @@
       "author": "PatrickJS/awesome-cursorrules",
       "tags": ["react", "javascript", "typescript", "frontend"]
     },
+    "nextjs": {
+      "name": "Next.js",
+      "description": "Next.js 14+ with App Router, Server Components, and Tailwind CSS",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/nextjs-app-router-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["nextjs", "react", "typescript", "frontend", "fullstack"]
+    },
+    "vue": {
+      "name": "Vue.js",
+      "description": "Vue 3 with Composition API, TypeScript, and Pinia",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/vue-3-composition-api-cursorrules/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["vue", "javascript", "typescript", "frontend"]
+    },
+    "nuxt": {
+      "name": "Nuxt.js",
+      "description": "Nuxt 3 with Vue 3 Composition API, TypeScript, and auto-imports",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/nuxt-3-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["nuxt", "vue", "typescript", "fullstack"]
+    },
     "svelte": {
       "name": "SvelteKit",
       "description": "SvelteKit with TypeScript, stores, and SSR",
       "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/sveltekit-tailwindcss-cursorrules-prompt-file/.cursorrules",
       "author": "PatrickJS/awesome-cursorrules",
       "tags": ["svelte", "sveltekit", "javascript", "frontend"]
+    },
+    "angular": {
+      "name": "Angular",
+      "description": "Angular 17+ with standalone components, signals, and best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/angular-typescript-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["angular", "typescript", "frontend"]
+    },
+    "astro": {
+      "name": "Astro",
+      "description": "Astro with content collections, TypeScript, and island architecture",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/astro-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["astro", "typescript", "frontend", "static"]
+    },
+    "solidjs": {
+      "name": "SolidJS",
+      "description": "SolidJS with fine-grained reactivity, TypeScript, and modern patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/solidjs-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["solidjs", "typescript", "frontend"]
+    },
+    "tailwind": {
+      "name": "Tailwind CSS",
+      "description": "Tailwind CSS with utility-first patterns and responsive design",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/tailwindcss-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["tailwind", "css", "frontend", "styling"]
+    },
+    "django": {
+      "name": "Django",
+      "description": "Django with ORM, REST framework, and Python best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/django-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["django", "python", "backend", "web"]
+    },
+    "fastapi": {
+      "name": "FastAPI",
+      "description": "FastAPI with async/await, Pydantic models, and OpenAPI integration",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/fastapi-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["fastapi", "python", "backend", "api"]
+    },
+    "flask": {
+      "name": "Flask",
+      "description": "Flask with blueprints, SQLAlchemy, and RESTful patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/flask-python-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["flask", "python", "backend", "web"]
+    },
+    "nestjs": {
+      "name": "NestJS",
+      "description": "NestJS with decorators, dependency injection, and TypeScript",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/nestjs-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["nestjs", "typescript", "backend", "nodejs"]
+    },
+    "express": {
+      "name": "Express.js",
+      "description": "Express.js with middleware, routing, and Node.js patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/express-node-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["express", "nodejs", "javascript", "backend"]
+    },
+    "laravel": {
+      "name": "Laravel",
+      "description": "Laravel PHP framework with Eloquent, Blade, and best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/laravel-tall-stack-best-practices/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["php", "laravel", "backend", "web"]
+    },
+    "rails": {
+      "name": "Ruby on Rails",
+      "description": "Ruby on Rails with ActiveRecord, conventions, and RESTful design",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/ruby-rails-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["ruby", "rails", "backend", "web"]
+    },
+    "java-spring": {
+      "name": "Spring Boot",
+      "description": "Spring Boot 3+ with Java, dependency injection, and REST APIs",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/java-spring-boot-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["java", "spring", "backend", "enterprise"]
+    },
+    "flutter": {
+      "name": "Flutter",
+      "description": "Flutter/Dart with clean architecture, BLoC, and widget patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/flutter-dart-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["flutter", "dart", "mobile", "cross-platform"]
+    },
+    "react-native": {
+      "name": "React Native",
+      "description": "React Native with TypeScript, hooks, and mobile best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/react-native-expo-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["react-native", "typescript", "mobile", "cross-platform"]
+    },
+    "expo": {
+      "name": "Expo",
+      "description": "Expo with React Native, managed workflow, and EAS Build",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/expo-react-native-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["expo", "react-native", "mobile", "cross-platform"]
+    },
+    "swift": {
+      "name": "Swift/SwiftUI",
+      "description": "Swift with SwiftUI, Combine, and iOS/macOS development patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/swift-swiftui-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["swift", "swiftui", "ios", "macos", "mobile"]
+    },
+    "kotlin": {
+      "name": "Kotlin/Android",
+      "description": "Kotlin with Jetpack Compose, coroutines, and Android development",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/kotlin-android-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["kotlin", "android", "mobile", "jetpack"]
+    },
+    "unity": {
+      "name": "Unity/C#",
+      "description": "Unity game development with C#, MonoBehaviour, and best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/unity-cursor-ai-c-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["unity", "csharp", "gamedev", "game"]
+    },
+    "godot": {
+      "name": "Godot/GDScript",
+      "description": "Godot 4 game development with GDScript and scene patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/godot-gdscript-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["godot", "gdscript", "gamedev", "game"]
+    },
+    "docker": {
+      "name": "Docker",
+      "description": "Docker with multi-stage builds, compose, and containerization best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/docker-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["docker", "containers", "devops", "infrastructure"]
+    },
+    "kubernetes": {
+      "name": "Kubernetes",
+      "description": "Kubernetes with manifests, Helm charts, and cloud-native patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/kubernetes-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["kubernetes", "k8s", "devops", "cloud"]
+    },
+    "terraform": {
+      "name": "Terraform",
+      "description": "Terraform IaC with modules, providers, and infrastructure patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/terraform-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["terraform", "iac", "devops", "cloud"]
+    },
+    "aws-cdk": {
+      "name": "AWS CDK",
+      "description": "AWS CDK with TypeScript, constructs, and cloud infrastructure patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/aws-cdk-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["aws", "cdk", "typescript", "cloud", "infrastructure"]
+    },
+    "github-actions": {
+      "name": "GitHub Actions",
+      "description": "GitHub Actions with workflows, CI/CD pipelines, and automation",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/github-actions-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["github", "actions", "ci-cd", "devops"]
+    },
+    "rust": {
+      "name": "Rust",
+      "description": "Rust with memory safety, ownership patterns, and idiomatic code",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/rust-code-guidelines/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["rust", "systems", "performance"]
+    },
+    "golang": {
+      "name": "Go",
+      "description": "Go with idiomatic patterns, error handling, and concurrency",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/go-backend-scalability-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["go", "golang", "backend", "concurrency"]
+    },
+    "cpp": {
+      "name": "C++",
+      "description": "Modern C++ with smart pointers, STL, and memory management",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/cpp-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["cpp", "c++", "systems", "performance"]
+    },
+    "csharp": {
+      "name": "C#/.NET",
+      "description": "C# with .NET 8+, async/await, LINQ, and modern patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/csharp-dotnet-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["csharp", "dotnet", "backend", "enterprise"]
+    },
+    "java": {
+      "name": "Java",
+      "description": "Modern Java with streams, records, and enterprise patterns",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/java-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["java", "backend", "enterprise"]
+    },
+    "php": {
+      "name": "PHP",
+      "description": "Modern PHP 8+ with attributes, named arguments, and best practices",
+      "url": "https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/rules/php-cursorrules-prompt-file/.cursorrules",
+      "author": "PatrickJS/awesome-cursorrules",
+      "tags": ["php", "backend", "web"]
     }
   },
   "_meta": {

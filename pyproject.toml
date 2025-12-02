@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cursor-setup"
-version = "2.0.0"
+version = "2.1.0"
 description = "🚀 Initialize your Cursor AI context in seconds. Community-driven templates with dynamic updates."
 readme = "README.md"
 license = {text = "MIT"}

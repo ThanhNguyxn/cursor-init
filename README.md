@@ -2,10 +2,10 @@
 
 > **The easiest way to set up Cursor AI for your project. One command. Done.**
 
-[![PyPI version](https://badge.fury.io/py/cursor-setup.svg)](https://badge.fury.io/py/cursor-setup)
+[![PyPI version](https://img.shields.io/pypi/v/cursor-setup.svg)](https://pypi.org/project/cursor-setup/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://pepy.tech/badge/cursor-setup)](https://pepy.tech/project/cursor-setup)
+[![Downloads](https://img.shields.io/pypi/dm/cursor-setup.svg)](https://pypi.org/project/cursor-setup/)
 
 ---
 
